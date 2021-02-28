@@ -2,6 +2,7 @@ package beer.zeer.echo.conf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
 
 @Configuration
 @EnableJdbcRepositories("beer.zeer.echo")
-public class JdbcConfig {
+public class JdbcConfig extends AbstractJdbcConfiguration {
     // database config file
     InputStream in = JdbcConfig.class.getClassLoader().getResourceAsStream("database-jdbc.properties");
 

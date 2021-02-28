@@ -37,9 +37,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(String.format("SELECT %s,%s,1 as PLACEHOLDER FROM %s WHERE username = ?",
-                        usernameColumn,passwordColumn, userTable))
-                .authoritiesByUsernameQuery(String.format("SELECT %s,%s as PLACEHOLDER FROM %s WHERE username = ?",
-                        usernameColumn,authorityColumn, authTable))
+                        usernameColumn, passwordColumn, userTable))
+                .authoritiesByUsernameQuery(String.format("SELECT %s,%s FROM %s WHERE username = ?",
+                        usernameColumn, authorityColumn, authTable))
                 .passwordEncoder(passwordEncoder);
     }
 }
